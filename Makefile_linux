@@ -1,0 +1,16 @@
+CROSSTOOL = arm-linux-gnueabihf
+LIBNAME   = sgemm_linux
+CC = $(CROSSTOOL)-gcc
+CPP = $(CROSSTOOL)-g++
+AR = $(CROSSTOOL)-ar
+LIBFNAME = lib$(LIBNAME).a
+PLATFORM = linux
+
+export PLATFORM CC CPP AR LIBFNAME
+
+all:
+	make -C src
+	$(CPP) -static -O2 -I./inc ./test/sgemm-test.cpp -L./lib -l$(LIBNAME) -lpthread -lm -o sgemm-test-linux
+clean:
+	@rm -rf sgemm-test-linux ./lib/*
+	make -C src clean

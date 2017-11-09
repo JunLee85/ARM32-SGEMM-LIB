@@ -1,0 +1,19 @@
+CROSSTOOL = arm-linux-androideabi
+LIBNAME   = sgemm_android
+CC = $(CROSSTOOL)-gcc
+CPP = $(CROSSTOOL)-g++
+AR = $(CROSSTOOL)-ar
+LIBFNAME = lib$(LIBNAME).a
+PLATFORM = android
+
+export PLATFORM CC CPP AR LIBFNAME
+
+all:
+	make -C src
+clean:
+	@rm -rf ./lib/*
+	make -C src clean 
+
+
+	
+	
