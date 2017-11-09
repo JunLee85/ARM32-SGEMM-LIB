@@ -1,5 +1,5 @@
 # ARM32-SGEMM-LIB
-a fast sgemm lib with fix 16 enable on arm 32 based on openblas
+a fast sgemm lib with neon & fix16 optimization on arm 32 based on openblas
 
 How to build on android
 1. make android
